@@ -4,7 +4,7 @@
     "handler": {},
     "parser": {}
   },
-  "html": "<h1 class=test class=boo></h1>",
+  "html": "<h1 class='test' class='boo'></h1>",
   "expected": [
     {
       "event": "opentagname",

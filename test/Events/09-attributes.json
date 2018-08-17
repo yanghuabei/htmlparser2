@@ -4,7 +4,7 @@
     "handler": {},
     "parser": {}
   },
-  "html": "<button class=\"test0\"title=\"test1\" disabled value=test2>adsf</button>",
+  "html": "<button class=\"test0\"title=\"test1\" disabled value='test2'>adsf</button>",
   "expected": [
     {
       "event": "opentagname",
