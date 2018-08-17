@@ -1,9 +1,9 @@
 # stricter-htmlparser2
 
-[![NPM version](http://img.shields.io/npm/v/htmlparser2.svg?style=flat)](https://npmjs.org/package/htmlparser2)
-[![Downloads](https://img.shields.io/npm/dm/htmlparser2.svg?style=flat)](https://npmjs.org/package/htmlparser2)
-[![Build Status](http://img.shields.io/travis/fb55/htmlparser2/master.svg?style=flat)](http://travis-ci.org/fb55/htmlparser2)
-[![Coverage](http://img.shields.io/coveralls/fb55/htmlparser2.svg?style=flat)](https://coveralls.io/r/fb55/htmlparser2)
+[![NPM version](http://img.shields.io/npm/v/stricter-htmlparser2.svg?style=flat)](https://npmjs.org/package/stricter-htmlparser2)
+[![Downloads](https://img.shields.io/npm/dm/stricter-htmlparser2.svg?style=flat)](https://npmjs.org/package/stricter-htmlparser2)
+[![Build Status](http://img.shields.io/travis/yanghuabei/stricter-htmlparser2/master.svg?style=flat)](http://travis-ci.org/yanghuabei/htmlparser2)
+[![Coverage](http://img.shields.io/coveralls/yanghuabei/stricter-htmlparser2.svg?style=flat)](https://coveralls.io/r/yanghuabei/htmlparser2)
 
 A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface.
 
