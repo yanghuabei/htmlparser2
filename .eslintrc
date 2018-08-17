@@ -36,25 +36,6 @@
       "smart-tabs"
     ],
     "space-infix-ops": 2,
-    "keyword-spacing": [
-      2,
-      {
-        "overrides": {
-          "if": {
-            "after": false
-          },
-          "catch": {
-            "after": false
-          },
-          "for": {
-            "after": false
-          },
-          "while": {
-            "after": false
-          }
-        }
-      }
-    ],
     "new-cap": 2,
     "comma-style": [
       2,
@@ -75,7 +56,7 @@
     "no-trailing-spaces": 2,
     "indent": [
       2,
-      "tab",
+      4,
       {
         "SwitchCase": 1
       }
@@ -88,6 +69,6 @@
       2,
       "_this"
     ],
-    "no-extra-semi": 0 // https://github.com/eslint/eslint/issues/6386
+    "no-extra-semi": 0
   }
 }

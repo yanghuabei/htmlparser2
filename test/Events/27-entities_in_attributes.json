@@ -4,7 +4,7 @@
     "handler": {},
     "parser": {"decodeEntities": true}
   },
-  "html": "<foo bar=&amp; baz=\"&amp;\" boo='&amp;' noo=>",
+  "html": "<foo bar='&amp;' baz=\"&amp;\" boo='&amp;' noo=>",
   "expected": [
     {
       "event": "opentagname",
