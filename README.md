@@ -40,7 +40,34 @@ A live demo of htmlparser2 is available [here](https://astexplorer.net/#/2AmVrGu
 	}
 	```
 
-3. Record attributes key in a object that value is wrapped by single quote. The object is passed to parser's `_cbs.onopentag` as the third argument.
+3. Record attributes key in a object that value is wrapped by single quote. The object is passed to `onopentag` method of parser's domhandler through the third argument.
+
+    ```
+	<foo name='{{flag ? "true" : "false"}}' title="title" class='hidden' />
+
+	// The third argument passed to onopentag:
+	{
+		name: true,
+		class: true
+	}
+
+	// Recommend domhandler onopentag implimentation
+	DomHandler.prototype.onopentag = function (name, attribs, singleQuoteAttribs) {
+		let properties = {
+			type: name === 'script' ? ElementType.Script : name === 'style' ? ElementType.Style : ElementType.Tag,
+			name: name,
+			attribs: attribs,
+			singleQuoteAttribs: singleQuoteAttribs,
+			children: []
+		};
+
+		let element = this._createDomElement(properties);
+
+		this._addDomElement(element);
+
+		this._tagStack.push(element);
+	};
+	```
 
 ## Usage
 
