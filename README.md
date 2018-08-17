@@ -1,4 +1,4 @@
-# htmlparser2
+# stricter-htmlparser2
 
 [![NPM version](http://img.shields.io/npm/v/htmlparser2.svg?style=flat)](https://npmjs.org/package/htmlparser2)
 [![Downloads](https://img.shields.io/npm/dm/htmlparser2.svg?style=flat)](https://npmjs.org/package/htmlparser2)
@@ -8,14 +8,44 @@
 A forgiving HTML/XML/RSS parser. The parser can handle streams and provides a callback interface.
 
 ## Installation
-	npm install htmlparser2
+	npm install 'stricter-htmlparser2'
 
 A live demo of htmlparser2 is available [here](https://astexplorer.net/#/2AmVrGuGVJ).
+
+## Differences to htmlparser2
+1. Attribute value without quote wrapped is not allowed.
+
+	```
+	<foo name=value />
+
+	// output
+	{
+		attribs: {
+			name: "",
+			value: ""
+		}
+	}
+	```
+
+2. "\"" is allowed in attribute value.
+
+	```
+	<foo name="hello \"world" />
+
+	// output
+	{
+		attribs: {
+			name: "hello \\"world"
+		}
+	}
+	```
+
+3. Record attributes key in a object that value is wrapped by single quote. The object is passed to parser's `_cbs.onopentag` as the third argument.
 
 ## Usage
 
 ```javascript
-var htmlparser = require("htmlparser2");
+var htmlparser = require("stricter-htmlparser2");
 var parser = new htmlparser.Parser({
 	onopentag: function(name, attribs){
 		if(name === "script" && attribs.type === "text/javascript"){
