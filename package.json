@@ -1,8 +1,8 @@
 {
   "name": "stricter-htmlparser2",
   "description": "Fast & forgiving HTML/XML/RSS parser with stricter attribute parsing rules.",
-  "version": "3.9.3",
-  "author": "Felix Boehm <me@feedic.com>",
+  "version": "3.9.4",
+  "author": "Felix Boehm <me@feedic.com> hiby",
   "keywords": [
     "html",
     "parser",
