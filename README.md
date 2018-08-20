@@ -43,30 +43,64 @@ A live demo of htmlparser2 is available [here](https://astexplorer.net/#/2AmVrGu
 3. Record attributes key in a object that value is wrapped by single quote. The object is passed to `onopentag` method of parser's domhandler through the third argument.
 
     ```
-	<foo name='{{flag ? "true" : "false"}}' title="title" class='hidden' />
+	<foo name='{{flag ? "true" : "false"}}' title="title" class='hidden'> </foo>
 
 	// The third argument passed to onopentag:
 	{
 		name: true,
 		class: true
 	}
+	```
 
-	// Recommend domhandler onopentag implimentation
-	DomHandler.prototype.onopentag = function (name, attribs, singleQuoteAttribs) {
-		let properties = {
-			type: name === 'script' ? ElementType.Script : name === 'style' ? ElementType.Style : ElementType.Tag,
-			name: name,
-			attribs: attribs,
-			singleQuoteAttribs: singleQuoteAttribs,
-			children: []
-		};
+	// If used with x-domhandler which is exported by this module, the parse result is like this:
+    ```javascript
+	{
+		type: "tag",
+		name: "foo",
+		attribs: {
+			name: "{{flag ? \"true\" : \"false\"}}",
+			title: "title",
+			class: "hidden"
+		},
+		singleQuoteAttribs: {
+			name: true,
+			class: true
+		},
+		selfClose: false
+	}
+	```
 
-		let element = this._createDomElement(properties);
+4. Add `selfClose` flag to parsed node element.
 
-		this._addDomElement(element);
+	**Input:**
 
-		this._tagStack.push(element);
-	};
+	```html
+	<foo name='{{flag ? "true" : "false"}}' title="title" class='hidden' />
+	```
+
+	**Parser code:**
+	```javascript
+	const {Parser, DomHandler} = require('stricter-htmlparser2');
+
+	const parser = new Parser(new DomHandler(), {}).end(inputStr);
+	```
+
+	**Output**
+	```javascript
+	{
+		type: "tag",
+		name: "foo",
+		attribs: {
+			name: "{{flag ? \"true\" : \"false\"}}",
+			title: "title",
+			class: "hidden"
+		},
+		singleQuoteAttribs: {
+			name: true,
+			class: true
+		},
+		selfClose: true
+	}
 	```
 
 ## Usage
